@@ -1,6 +1,7 @@
-package com.topic;
+package com.Dao;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.bean.Memberbean;
@@ -8,7 +9,7 @@ import com.bean.Memberbean;
 public interface memberdao {
 
 	//getConnection 建立連線
-	Connection getConnection();
+	Connection getConnection() throws SQLException;
 
 	//用會員編號尋找
 	Memberbean showAMember(int m_number);
@@ -20,15 +21,19 @@ public interface memberdao {
 	void insertMember(Memberbean Memberbean);
 
 	//更新會員
-	boolean updateMember();
+	boolean updateMember(Memberbean Memberbean);
 
 	//刪除會員
-	boolean deltetMember();
+	boolean deltetMember(int m_number);
 
 	//確認資料庫內是否有這組帳密
 	boolean checkloginDB();
 
 	//確認資料庫內是否有這組帳密
 	boolean checkaccpwd();
+
+	
+
+
 
 }
