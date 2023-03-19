@@ -17,6 +17,7 @@ private Date m_creatdate;
 private int m_points;
 private String m_id;
 private String m_verify;
+private String m_img;
 
 //全部的欄位
 public Memberbean(int m_number, String m_account,String m_password,String m_name,String m_phone,String m_address,String m_email,Date m_birth,Date m_creatdate,int m_points,String m_id) {
@@ -49,7 +50,27 @@ public Memberbean( String m_account,String m_password,String m_name,String m_pho
 	this.m_id = m_id;
 		
 }
+//更新會員的
+public Memberbean( String m_account,String m_password,String m_name,String m_phone,String m_address,String m_email,Date m_birth,int m_points,String m_id) {
+	super();
+	this.m_account = m_account;
+	this.m_password = m_password;
+	this.m_name = m_name;
+	this.m_phone = m_phone;	 
+	this.m_address = m_address;
+	this.m_email = m_email;
+	this.m_birth = m_birth;
+	this.m_points = m_points;
+	this.m_id = m_id;
+		
+}
 
+public String getM_img() {
+	return m_img;
+}
+public void setM_img(String m_img) {
+	this.m_img = m_img;
+}
 
 public int getM_number() {
 	return m_number;
