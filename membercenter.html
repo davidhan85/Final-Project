@@ -12,6 +12,13 @@
   <input type="hidden" name="action" value="list">
   <input type="submit" value="查詢">
 </form>
+<h2>搜尋單筆會員</h2>
+<form action="../member?action=show" method="get">
+  <input type="hidden" name="action" value="show">
+  <label for="m_number">會員編號:</label>
+  <input type="text" name="m_number" required>
+  <input type="submit" value="查詢">
+</form>
 <h2>新增會員</h2>
 <a href="../member?action=new">新增會員</a>
 

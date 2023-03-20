@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>生日：</td>
-                <td><input type="date" name="m_birth" required></td>
+                <td><input type="date" name="m_birth" value="2018/10/10"required></td>
             </tr>
             <tr>
                 <td>積分：</td>

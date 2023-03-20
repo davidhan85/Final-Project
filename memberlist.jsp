@@ -20,8 +20,7 @@
                 <th>電子郵件</th>
                 <th>生日</th>
                 <th>積分</th>
-                <th>ID</th>
-              
+                <th>ID</th>             
             </tr>
         </thead>
         <tbody>
@@ -36,8 +35,8 @@
                     <td>${member.m_birth}</td>
                     <td>${member.m_points}</td>
                     <td>${member.m_id}</td>
-                    <td><a href="member?action=edit&amp;m_number=${member.m_number}">編輯</a></td>
-                    <td><a href="member?action=delete&amp;m_number=${member.m_number}">刪除</a></td>
+                    <td><a href="member?action=edit&m_number=${member.m_number}">編輯</a></td>
+                    <td><a href="member?action=delete&m_number=${member.m_number}">刪除</a></td>
                 </tr>
             </c:forEach>
         </tbody>
