@@ -56,6 +56,7 @@ public class member extends HttpServlet {
 			showAmember(request,response);
 			break;
 		}
+		
 		default:
 			showAll(request,response);
 			break;
@@ -64,7 +65,9 @@ public class member extends HttpServlet {
 	//會員編輯
 	private void showeditform(HttpServletRequest request, HttpServletResponse response) {
 		int m_number=Integer.parseInt(request.getParameter("m_number"));
-		Memberbean AMember = memberdao.showAMember(m_number);
+		Memberbean AMember = memberdao.showAmember(m_number);
+		System.out.println(m_number);
+		System.out.println(AMember);
 		//System.out.println(AMember);
 		request.setAttribute("AMember", AMember);
 			try {
@@ -78,10 +81,11 @@ public class member extends HttpServlet {
 	//查詢單一會員
 	private void showAmember(HttpServletRequest request, HttpServletResponse response) {
 		int m_number=Integer.parseInt(request.getParameter("m_number"));
-		Memberbean AMember = memberdao.showAMember(m_number);
+		Memberbean AMember = memberdao.showAmember(m_number);
+		System.out.println(AMember.getM_account());
 		request.setAttribute("AMember", AMember);
 		try {
-			request.getRequestDispatcher("/View/member.jsp").forward(request, response);
+			request.getRequestDispatcher("/View/showmember.jsp").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -127,27 +131,27 @@ public class member extends HttpServlet {
 	}
 	//新增會員
 	private void insertmember(HttpServletRequest request, HttpServletResponse response) {
-		Date birth=null;
+		
 		String account=request.getParameter("m_account");
 		String password=request.getParameter("m_password");
 		String name=request.getParameter("m_name");
 		String phone=request.getParameter("m_phone");
 		String address=request.getParameter("m_address");
 		String email=request.getParameter("m_email");
+		Date birth=null;
 		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		    java.util.Date utilDate;
 			try {
 				utilDate = sdf.parse(request.getParameter("m_birth"));
 				birth = new Date(utilDate.getTime());
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		LocalDate create = LocalDate.now();
 		Date creatdate=Date.valueOf(create);
 		int point=Integer.valueOf(request.getParameter("m_points"));
 		String id=request.getParameter("m_id");
-		Memberbean memberbean = new Memberbean(account, password, name, phone, address,email,creatdate,birth,point,id);
+		Memberbean memberbean = new Memberbean(account, password, name, phone, address,email,birth,creatdate,point,id);
 		memberdao.insertMember(memberbean);
 		try {
 			response.sendRedirect("member?action=list");
@@ -180,6 +184,7 @@ public class member extends HttpServlet {
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}
 }
