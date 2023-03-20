@@ -30,8 +30,8 @@ public class memberdaopractice implements memberdao {
 	public static final String DELETE_MEMBER_SQL="DELETE FROM [dbo].[memderdata]"
 	 		+"WHERE [member_number]=?";
 	public static final String UPDATE_MEMBER_SQL="UPDATE [dbo].[memderdata]"
-			+ "+ SET [member_account] =?,[member_password] =?,[member_name] =?,[member_phone] =?,[member_address]=?,[member_email]=?,[member_birth]=?,[member_points]=?,[member_id]=?"
-			+ "+ WHERE [member_number]=?";
+			+ " SET [member_account] =?,[member_password] =?,[member_name] =?,[member_phone] =?,[member_address]=?,[member_email]=?,[member_birth]=?,[member_points]=?,[member_id]=?"
+			+ " WHERE [member_number]=?";
 	
 	//getConnection 建立連線
 	@Override
@@ -42,7 +42,7 @@ public class memberdaopractice implements memberdao {
 	}
 	//用會員編號尋找
 	@Override
-	public Memberbean showAMember(int m_number) {
+	public Memberbean showAmember(int m_number) {
 		Memberbean Memberbean=null;
 		try {
 				Class.forName(JDBC_DRIVER);
@@ -51,6 +51,7 @@ public class memberdaopractice implements memberdao {
 			pstmt.setInt(1,m_number );
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
+				int no=m_number;
 				String account=rs.getString("member_account");
 				String password=rs.getString("member_password");
 				String name=rs.getString("member_name");
@@ -61,7 +62,7 @@ public class memberdaopractice implements memberdao {
 				Date creatdate=rs.getDate("member_creatdate");
 				int point=rs.getInt("member_points");
 				String id=rs.getString("member_id");
-				Memberbean=new Memberbean(account,password,name,phone,address,email,birth,creatdate,point,id);
+				Memberbean=new Memberbean(no,account,password,name,phone,address,email,birth,creatdate,point,id);
 			}
 	
 			conn.close();
@@ -163,6 +164,7 @@ public class memberdaopractice implements memberdao {
 			pstmt.setDate(7,new Date( Memberbean.getM_birth().getTime()));
 			pstmt.setInt(8,Memberbean.getM_points());
 			pstmt.setString(9,Memberbean.getM_id());
+			pstmt.setInt(10, Memberbean.getM_number());
 		   int updatacount=pstmt.executeUpdate();
 		   conn.close();
 		   return updatacount>0;

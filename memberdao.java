@@ -12,7 +12,7 @@ public interface memberdao {
 	Connection getConnection() throws SQLException;
 
 	//用會員編號尋找
-	Memberbean showAMember(int m_number);
+	Memberbean showAmember(int m_number);
 
 	//尋找所有會員
 	List<Memberbean> showAllMember();
