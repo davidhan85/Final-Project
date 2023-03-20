@@ -65,6 +65,7 @@ public Memberbean( String m_account,String m_password,String m_name,String m_pho
 		
 }
 
+
 public String getM_img() {
 	return m_img;
 }
