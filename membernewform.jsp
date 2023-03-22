@@ -51,5 +51,8 @@
             </tr>
         </table>
     </form>
+     <form action="/member/View/membercenter.html" method="get">
+ <input type="submit" value="返回">
+ </form>
 </body>
 </html>

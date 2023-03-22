@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>會員列表</title>
+<script>
+function confirmDelete() {
+	return confirm("test");
+}
+</script>
 </head>
 <body>
  <h1>會員列表</h1>
@@ -26,7 +31,7 @@
         <tbody>
             <c:forEach var="member" items="${Allmember}">
                 <tr>
-                    <td>${member.m_number}</td>
+                <td><a href="member?action=show&m_number=${member.m_number}">${member.m_number} </a></td>
                     <td>${member.m_account}</td>
                     <td>${member.m_name}</td>
                     <td>${member.m_phone}</td>
@@ -36,10 +41,13 @@
                     <td>${member.m_points}</td>
                     <td>${member.m_id}</td>
                     <td><a href="member?action=edit&m_number=${member.m_number}">編輯</a></td>
-                    <td><a href="member?action=delete&m_number=${member.m_number}">刪除</a></td>
+                    <td><a href="member?action=delete&m_number=${member.m_number}" onclick="return confirm();">刪除</a></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
+     <form action="/member/View/membercenter.html" method="get">
+ <input type="submit" value="返回">
+ </form>
 </body>
 </html>
