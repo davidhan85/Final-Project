@@ -126,7 +126,6 @@ public class memberdaopractice implements memberdao {
 				DataSource ds=(DataSource)context.lookup("java:/comp/env/jdbc/servdb");
 				conn = ds.getConnection();
 			} catch (NamingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			PreparedStatement pstmt = conn.prepareStatement(INSERT_MEMBER_SQL);
@@ -160,8 +159,8 @@ public class memberdaopractice implements memberdao {
 			pstmt.setString(3,Memberbean.getM_name());
 			pstmt.setString(4,Memberbean.getM_phone());
 			pstmt.setString(5,Memberbean.getM_address());
-			pstmt.setString(6, Memberbean.getM_email());
-			pstmt.setDate(7,new Date( Memberbean.getM_birth().getTime()));
+			pstmt.setString(6,Memberbean.getM_email());
+			pstmt.setDate(7,new Date(Memberbean.getM_birth().getTime()));
 			pstmt.setInt(8,Memberbean.getM_points());
 			pstmt.setString(9,Memberbean.getM_id());
 			pstmt.setInt(10, Memberbean.getM_number());
