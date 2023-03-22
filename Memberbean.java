@@ -36,7 +36,7 @@ public Memberbean(int m_number, String m_account,String m_password,String m_name
 		
 }
 //除去m_number的欄位
-public Memberbean( String m_account,String m_password,String m_name,String m_phone,String m_address,String m_email,Date m_birth,Date m_creatdate,int m_points,String m_id) {
+public Memberbean( String m_account,String m_password,String m_name,String m_phone,String m_address,String m_email,Date m_birth,Date m_creatdate,int m_points,String m_id,int m_number) {
 	super();
 	this.m_account = m_account;
 	this.m_password = m_password;
@@ -51,8 +51,9 @@ public Memberbean( String m_account,String m_password,String m_name,String m_pho
 		
 }
 //更新會員的
-public Memberbean( String m_account,String m_password,String m_name,String m_phone,String m_address,String m_email,Date m_birth,int m_points,String m_id) {
+public Memberbean( int m_number,String m_account,String m_password,String m_name,String m_phone,String m_address,String m_email,Date m_birth,int m_points,String m_id) {
 	super();
+	this.m_number = m_number;
 	this.m_account = m_account;
 	this.m_password = m_password;
 	this.m_name = m_name;
@@ -62,8 +63,10 @@ public Memberbean( String m_account,String m_password,String m_name,String m_pho
 	this.m_birth = m_birth;
 	this.m_points = m_points;
 	this.m_id = m_id;
+	
 		
 }
+
 
 
 public String getM_img() {
