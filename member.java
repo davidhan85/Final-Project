@@ -68,7 +68,6 @@ public class member extends HttpServlet {
 		Memberbean AMember = memberdao.showAmember(m_number);
 		System.out.println(m_number);
 		System.out.println(AMember);
-		//System.out.println(AMember);
 		request.setAttribute("AMember", AMember);
 			try {
 				request.getRequestDispatcher("/View/memberform.jsp").forward(request, response);
@@ -82,7 +81,6 @@ public class member extends HttpServlet {
 	private void showAmember(HttpServletRequest request, HttpServletResponse response) {
 		int m_number=Integer.parseInt(request.getParameter("m_number"));
 		Memberbean AMember = memberdao.showAmember(m_number);
-		System.out.println(AMember.getM_account());
 		request.setAttribute("AMember", AMember);
 		try {
 			request.getRequestDispatcher("/View/showmember.jsp").forward(request, response);
@@ -94,6 +92,7 @@ public class member extends HttpServlet {
 	}
 	//更新會員
 	private void updatemember(HttpServletRequest request, HttpServletResponse response) {
+		int m_number=Integer.parseInt(request.getParameter("m_number"));
 		String account=request.getParameter("m_account");
 		String password=request.getParameter("m_password");
 		String name=request.getParameter("m_name");
@@ -101,7 +100,7 @@ public class member extends HttpServlet {
 		String address=request.getParameter("m_address");
 		String email=request.getParameter("m_email");
 		Date birth=null;
-		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		    java.util.Date utilDate;
 			try {
 				utilDate = sdf.parse(request.getParameter("m_birth"));
@@ -111,7 +110,7 @@ public class member extends HttpServlet {
 			}
 		int point=Integer.valueOf(request.getParameter("m_points"));
 		String id=request.getParameter("m_id");
-		Memberbean memberbean = new Memberbean(account, password, name, phone, address, email, birth, point, id);
+		Memberbean memberbean = new Memberbean(m_number,account, password, name, phone, address, email, birth, point, id);
 		memberdao.updateMember(memberbean);
 		try {
 			response.sendRedirect("member?action=list");
@@ -139,7 +138,7 @@ public class member extends HttpServlet {
 		String address=request.getParameter("m_address");
 		String email=request.getParameter("m_email");
 		Date birth=null;
-		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		    java.util.Date utilDate;
 			try {
 				utilDate = sdf.parse(request.getParameter("m_birth"));
@@ -151,7 +150,7 @@ public class member extends HttpServlet {
 		Date creatdate=Date.valueOf(create);
 		int point=Integer.valueOf(request.getParameter("m_points"));
 		String id=request.getParameter("m_id");
-		Memberbean memberbean = new Memberbean(account, password, name, phone, address,email,birth,creatdate,point,id);
+		Memberbean memberbean = new Memberbean(point, account, password, name, phone, address,email,birth,creatdate,point,id);
 		memberdao.insertMember(memberbean);
 		try {
 			response.sendRedirect("member?action=list");
