@@ -41,12 +41,12 @@ function confirmDelete() {
                     <td>${member.m_points}</td>
                     <td>${member.m_id}</td>
                     <td><a href="member?action=edit&m_number=${member.m_number}">編輯</a></td>
-                    <td><a href="member?action=delete&m_number=${member.m_number}" onclick="return confirm();">刪除</a></td>
+                    <td><a href="member?action=delete&m_number=${member.m_number}" onclick="return confirm('你確定要刪除嗎?');">刪除</a></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
-     <form action="/member/View/membercenter.html" method="get">
+     <form action="/member/View/membercenter.jsp" method="get">
  <input type="submit" value="返回">
  </form>
 </body>

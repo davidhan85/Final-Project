@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>新增會員</title>
+<style>
+    body{
+        background-color: #C4E1E1;
+    }
+</style>
 </head>
 <body>
  <h1>新增成員</h1>
@@ -51,7 +56,7 @@
             </tr>
         </table>
     </form>
-     <form action="/member/View/membercenter.html" method="get">
+     <form action="/member/View/membercenter.jsp" method="get">
  <input type="submit" value="返回">
  </form>
 </body>
